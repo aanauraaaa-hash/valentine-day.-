@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruang Kenangan Kita</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#7a1f3d;
+  --pink:#f8c8dc;
+  --cream:#fff4e6;
+  --dark:#4a1c2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+  background:linear-gradient(135deg,var(--cream),var(--pink));
+  color:var(--dark);
+  overflow-x:hidden;
+}
+section{
+  min-height:100vh;
+  padding:60px 10%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+h1,h2{
+  margin-bottom:20px;
+}
+button{
+  background:var(--maroon);
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:25px;
+  cursor:pointer;
+  margin-top:20px;
+  transition:0.3s;
+}
+button:hover{
+  transform:scale(1.05);
+  background:#9c2a52;
+}
+.card{
+  background:white;
+  padding:20px;
+  border-radius:20px;
+  margin:10px 0;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  transition:0.4s;
+}
+.card:hover{
+  transform:translateY(-5px);
+}
+.center{
+  text-align:center;
+}
+.secret{
+  display:none;
+  margin-top:30px;
+  padding:25px;
+  border-radius:20px;
+  background:var(--maroon);
+  color:white;
+  animation:fadeIn 1.5s ease forwards;
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:14px;
+  opacity:0.7;
+}
+</style>
+</head>
+<body>
+
+<!-- OPENING -->
+<section class="show center">
+  <h1>Happy Valentine's Day Jiann</h1>
+  <p>ada satu ruang kecil yang sengaja dibuat khusus buat kamu.<br>
+  Isinya bukan barang. Tapi perasaan.<br><br>
+  Siap masuk?</p>
+  <button onclick="scrollNext()">Masuk Pelan-Pelan</button>
+</section>
+
+<!-- STORY SECTION -->
+<section>
+  <h2>Awal Kita</h2>
+  <div class="card">
+    <p>masih ingat awal kita dekat? kita saling cerita, saling curhat, bahkan saling perhatian (padahal gaada hubungan hihihi). masa itu lucu yaa jiann.</p>
+  </div>
+  <div class="card">
+    <p>dari chat random, jadi cerita panjang. 
+    Dari “eh boleh cerita ta?” jadi “kok sepi kalau ngga ada kamu ya? :(”</p>
+  </div>
+</section>
+
+<!-- MOMENTS -->
+<section>
+  <h2>Momen Kecil yang Ternyata Besar</h2>
+  <div class="card">cara kamu ketawa waktu bercandanya receh banget.</div>
+  <div class="card">waktu kamu ngambek tapi tetap nggak bisa lama.</div>
+  <div class="card">obrolan random tengah malam yang ujungnya ketiduran.</div>
+  <div class="card">hal-hal kecil yang mungkin orang lain nggak sadar, tapi buatku itu spesial.</div>
+</section>
+
+<!-- THINGS I LIKE -->
+<section>
+  <h2>Hal yang Diam-Diam Disukai</h2>
+  <div class="card">caramu peduli ke an an (walaupun masih banya cuek e sii).</div>
+  <div class="card">waktu kamu clingy ke an an (kalau bisa terusan clingy e yaa).</div>
+  <div class="card">waktu jian marahin/ngomelin an an kalau an an buat salah.</div>
+</section>
+
+<!-- SURPRISE -->
+<section class="center">
+  <h2>Sampai di sini ya?</h2>
+  <p>Kalau sudah sejauh ini, berarti kamu penasaran.<br>
+  Coba tekan tombol rahasia ini.</p>
+  <button onclick="openSecret()">Buka Rahasia</button>
+  <div class="secret" id="secretBox">
+    <h2>FOR YOU</h2>
+    <p>
+      Terima kasih sudah hadir.<br><br>
+      Terima kasih sudah sabar.<br>
+      Terima kasih sudah bertahan.<br><br>
+      Kalau ke depan nanti ada hari berat, semoga kita tetap memilih untuk saling menguatkan.<br><br>
+      Dan kalau ada hari bahagia, semoga kita tertawa lebih keras lagi.<br><br>
+      Kamu bukan cuma bagian dari cerita.<br>
+      Kamu adalah alasannya cerita ini terasa hidup.
+    </p>
+  </div>
+</section>
+
+<footer>
+Dibuat dengan hati. Disimpan selamanya.
+</footer>
+
+<script>
+function scrollNext(){
+  window.scrollBy({top:window.innerHeight,behavior:'smooth'});
+}
+
+function openSecret(){
+  document.getElementById("secretBox").style.display="block";
+}
+
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+  sections.forEach(sec=>{
+    const top=sec.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){
+      sec.classList.add("show");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
